@@ -1,15 +1,28 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
+import '../App.css'
 
-const TaskForm = ({onFormSubmit}) => {
-    const [task,setTask] = useState();
+
+const TaskForm = ({onFormSubmit, name , date, task,surname}) => {
+  const taskRef = useRef()
+  const dateRef = useRef()
+  const nameRef = useRef()
+  const surnameRef = useRef()
+   
     const onSubmit = (e) => {
         e.preventDefault()
-        onFormSubmit(task)
+        if(taskRef.current && dateRef.current && nameRef.current && surnameRef.current){
+          onFormSubmit(taskRef.current.value,dateRef.current.value,nameRef.current.value,surnameRef.current.value)
+        }else{
+          alert("please fill all the input")
+        }
     }
   return (
-    <div>
+    <div className='form_container'>
         <form onSubmit={onSubmit}>
-            <input type="text" placeholder='Enter your Task' onChange={e => setTask(e.target.value)}/>
+            <input type="text" placeholder='Enter your Task' ref={taskRef} defaultValue={task}/>
+            <input type="date" ref={dateRef} defaultValue={date}/>
+            <input type="text" placeholder='FirstName' ref={nameRef} defaultValue={name}/>
+            <input type="text" placeholder='last name' ref={surnameRef} defaultValue={surname}/>
             <button>Submit</button>
         </form>
     </div>

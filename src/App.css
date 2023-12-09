@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.customers td, .customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+.customers tr:nth-child(even){background-color: #f2f2f2;}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.btn{
+  background-color: #04AA6D;
+  padding: 15px 5px;
+  color: #fff;
+  border-radius: 7px;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.form_container form{
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form_container form input{
+  outline: none;
+  padding: 7px 15px;
+  margin: 2px 0;
+}
+.form_container form button{
+  padding: 7px 15px;
+  background-color: #04AA6D;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.edit{
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(215, 163, 67);
+  border: 1px solid rgb(215, 163, 67);
+  border-radius: 8px;
+  padding: 3px 10px;
+  transition: 0.3s;
+}
+.edit:hover{
+  background: none;
+  color:  rgb(215, 163, 67);
+}
+.delete{
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(227, 2, 2);
+  border: 1px solid rgb(227, 2, 2);
+  border-radius: 8px;
+  padding: 3px 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.delete:hover{
+  background: none;
+  color:  rgb(227, 2, 2);
 }
