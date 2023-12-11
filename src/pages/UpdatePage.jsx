@@ -32,11 +32,12 @@ const UpdatePage = () => {
   return (
     <div>
       <TaskForm 
+
       onFormSubmit={onSubmit}
       name={response.task}
       surname={response.date}
-      date={response.name}
       task={response.surname}
+      date={response.name}
       />
     </div>
   )

@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import '../App.css'
 
 
-const TaskForm = ({onFormSubmit, name , date, task,surname}) => {
+const TaskForm = ({onFormSubmit, task , date, name,surname}) => {
   const taskRef = useRef()
   const dateRef = useRef()
   const nameRef = useRef()

@@ -1,43 +1,24 @@
 import React from 'react'
 import { RingLoader } from 'react-spinners';
-import useFetch from '../hooks/useFetch';
 import { Link } from 'react-router-dom';
-import useRequest from '../hooks/useRequest';
+import { useTasksContext } from '../contexts/TaskContexts';
 
 const MainPage = () => {
-    const {error,loading,response,resendRequest} = useFetch({url:"https://crudapi.co.uk/api/v1/tasks",method:"GET"})
-    const {sendRequest} = useRequest({method:'DELETE'})
-    const taskList = response?.items.map(tasks => {
-    return {
-      task: tasks.task,
-      id: tasks._uuid,
-      date: tasks.date,
-      name: tasks.name,
-      surname: tasks.surname,
-    };
-  }) || []
+  const {taskList,dataLoading,deleteLoading,onDelete} = useTasksContext()
 
-  const onDelete = (userId) =>{
-    sendRequest(null, `https://crudapi.co.uk/api/v1/tasks/${userId}`).then(() => resendRequest())
-  }
-
-    if(loading) 
+    if(dataLoading || deleteLoading) 
   return <div className='loader'>
     <RingLoader
         color= {'#04AA6D'}
-        loading={loading}
+        loading={dataLoading}
         size={100}
         aria-label="Loading Spinner"
         data-testid="loader"
       />
   </div>
   
-  if(error) return <p>{error}</p>
   return (
     <div className="App">
-
-       
-
       <table className="customers">
         <thead>
           <tr>
